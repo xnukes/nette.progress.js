@@ -16,7 +16,9 @@ $.nette.ext('progress', {
 
     },
     before: function (xhr, settings) {
-        this.defaults.progressBar = $(settings.nette.e.target).data('ajax-progress') ? $(settings.nette.e.target).data('ajax-progress') : false;
+        if(settings.nette !== undefined) {
+            this.defaults.progressBar = $(settings.nette.e.target).data('ajax-progress') ? $(settings.nette.e.target).data('ajax-progress') : false;
+        }
     },
     start: function (xhr, settings) {
         if(this.defaults.progressBar) {
